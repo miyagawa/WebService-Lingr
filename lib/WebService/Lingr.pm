@@ -1,7 +1,7 @@
 package WebService::Lingr;
 
 use strict;
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use Carp;
 use Data::Visitor::Callback;
@@ -61,13 +61,14 @@ sub create_session {
 
 sub call {
     my($self, $method, $args) = @_;
-    $self->_call($method, { %$args, session => $self->{session} });
+    $args->{session} = $self->{session} if $self->{session};
+    $self->_call($method, $args);
 }
 
 sub _call {
     my($self, $method, $args) = @_;
 
-    my @method = split /\./, $method;
+    my @method = map { s/([A-Z])/"_".lc($1)/eg; $_ } split /\./, $method;
     my $uri = URI->new($APIBase . "/" . join("/", @method));
 
     # downgrade all parameters to utf-8, if they're Unicode
