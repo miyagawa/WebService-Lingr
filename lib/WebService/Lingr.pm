@@ -123,6 +123,8 @@ sub DESTROY {
 1;
 __END__
 
+=for stopwords JSON API Lingr
+
 =head1 NAME
 
 WebService::Lingr - Low-level Lingr Chat API
