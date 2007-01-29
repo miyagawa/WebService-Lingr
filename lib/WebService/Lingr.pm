@@ -159,9 +159,13 @@ WebService::Lingr - Low-level Lingr Chat API
 
 =head1 DESCRIPTION
 
-WebService::Lingr is a low-level Lingr API implementation in Perl. It
-just gives you a straight mapping of Perl object methods to Lingr REST
-API, handles session management and data mapping via JSON.
+WebService::Lingr is a low-level Lingr API implementation in Perl. By
+"low-level" it means that this module just gives you a straight
+mapping of Perl object methods to Lingr REST API, session management
+and data mapping via JSON.
+
+For higher level event driven programming, you might want to use
+POE::Component::Client::Lingr (unfinished).
 
 =head1 AUTHOR
 
